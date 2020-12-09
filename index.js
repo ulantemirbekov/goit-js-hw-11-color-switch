@@ -13,7 +13,7 @@ const randomIntegerFromInterval = (min, max) => {
 
 const bodyRef = document.querySelector('body');
 const startRef = document.querySelector('[data-action="start"]');
-const finishRef = document.querySelector('[data-action="stop"]');
+const stopRef = document.querySelector('[data-action="stop"]');
 
 let timerId;
 
@@ -21,15 +21,15 @@ function colorSwitcher() {
     timerId = setInterval(() => {
         bodyRef.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length - 1)];
         startRef.disabled = true;
-        finishRef.disabled = false;
+        stopRef.disabled = false;
     }, 1000);
 };
 
 startRef.addEventListener('click', colorSwitcher);
-finishRef.addEventListener('click', () => {
+stopRef.addEventListener('click', () => {
     clearInterval(timerId);
     startRef.disabled = false;
-    finishRef.disabled = true;
+    stopRef.disabled = true;
 });
 
 
